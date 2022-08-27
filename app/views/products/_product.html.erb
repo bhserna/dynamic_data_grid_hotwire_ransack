@@ -1,0 +1,5 @@
+<%= tag.tr id: dom_id(product) do %>
+  <td><%= product.name %></td>
+  <td><%= product.category %></td>
+  <td><%= number_to_currency product.price %></td>
+<% end %>

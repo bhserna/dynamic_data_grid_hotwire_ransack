@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "https://unpkg.com/open-props";
+ 
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-1);
+  margin-right: auto;
+  margin-left: auto;
+  padding: var(--size-5);
+}
+
+.table-container { overflow: auto; }
+table { width: 100%; }
+tbody { line-height: var(--font-lineheight-3); }
+td, th {
+  text-align: left;
+  padding-bottom: var(--size-2);
+  padding-right: var(--size-2);
+  background-color: white;
+  border-color: var(--gray-3);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-size-1);
+}
+th { font-weight: 600; }
+td { padding-top: var(--size-2); }
+
+.pagy-nav { padding: var(--size-7) 0; }
+.pagy-nav .page { padding: 0 var(--size-1); }

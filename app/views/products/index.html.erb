@@ -1,0 +1,18 @@
+<h1>Products</h1>
+
+<div class="table-container">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @products %>
+    </tbody>
+  </table>
+</div>
+
+<%= raw pagy_nav(@pagy) %>
