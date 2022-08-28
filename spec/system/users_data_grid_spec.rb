@@ -26,6 +26,19 @@ RSpec.describe "Users data grid" do
     expect(ordered_rows_ids).to eq([dom_id(product2), dom_id(product1)])
   end
 
+  it "search by name" do
+    product1 = create :product, name: "A"
+    product2 = create :product, name: "B"
+
+    visit products_path
+
+    fill_in "Name contains", with: "A"
+    click_on "Search"
+
+    expect(page).to display_product(product1)
+    expect(page).not_to display_product(product2)
+  end
+
   def display_product(product)
     have_css "#product_#{product.id}"
   end

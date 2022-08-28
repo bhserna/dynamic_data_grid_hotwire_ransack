@@ -26,7 +26,50 @@ body {
   padding: var(--size-5);
 }
 
-.table-container { overflow: auto; }
+label {
+  display: block;
+}
+
+input[type="search"],
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: white;
+  border: var(--gray-3) solid var(--border-size-1);
+  border-radius: var(--radius-2);
+  margin-top: var(--size-2);
+  padding: var(--size-2);
+  height: var(--size-8);
+  display: block;
+  font-size: var(--font-size-1);
+  width: 100%;
+}
+
+input[type="submit"] {
+  padding: var(--size-2) var(--size-4);
+  border: var(--blue-6) solid var(--border-size-1);
+  background-color: var(--blue-6);
+  color: white;
+  border-radius: var(--radius-2);
+  font-size: var(--font-size-1);
+}
+
+input[type="submit"]:hover {
+  background-color: var(--blue-8);
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--size-2);
+  align-items: flex-end;
+}
+
+.table-container {
+  margin-top: var(--size-7);
+  overflow: auto; 
+}
+
 table { width: 100%; }
 tbody { line-height: var(--font-lineheight-3); }
 td, th {

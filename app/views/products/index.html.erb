@@ -1,5 +1,31 @@
 <h1>Products</h1>
 
+<%= search_form_for @q do |f| %>
+  <div>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
+  </div>
+
+  <div>
+  <%= f.label :category_eq %>
+  <%= f.select :category_eq, Product.categories, include_blank: true %>
+  </div>
+
+  <div>
+  <%= f.label :price_gt %>
+  <%= f.search_field :price_gt %>
+  </div>
+
+  <div>
+  <%= f.label :price_lt %>
+  <%= f.search_field :price_lt %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <div class="table-container">
   <table>
     <thead>
