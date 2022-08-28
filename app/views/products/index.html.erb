@@ -4,9 +4,9 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
+        <th><%= sort_link(@q, :name) %></th>
+        <th><%= sort_link(@q, :category) %></th>
+        <th><%= sort_link(@q, :price) %></th>
       </tr>
     </thead>
     <tbody>
