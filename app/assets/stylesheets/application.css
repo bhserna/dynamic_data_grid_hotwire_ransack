@@ -68,7 +68,6 @@ form {
 
 table {
   width: 100%;
-  margin-top: var(--size-7);
 }
 tbody { line-height: var(--font-lineheight-3); }
 td, th {
@@ -85,3 +84,6 @@ td { padding-top: var(--size-2); }
 
 .pagy-nav { padding: var(--size-7) 0; }
 .pagy-nav .page { padding: 0 var(--size-1); }
+
+.loading { visibility: hidden; }
+turbo-frame[busy] .loading { visibility: visible; }
