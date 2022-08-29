@@ -1,32 +1,28 @@
 <h1>Products</h1>
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
   <div>
   <%= f.label :name_cont %>
-  <%= f.search_field :name_cont %>
+  <%= f.search_field :name_cont, "data-action": "filters#submit" %>
   </div>
 
   <div>
   <%= f.label :category_eq %>
-  <%= f.select :category_eq, Product.categories, include_blank: true %>
+  <%= f.select :category_eq, Product.categories, {include_blank: true}, {"data-action": "filters#submit"} %>
   </div>
 
   <div>
   <%= f.label :price_gt %>
-  <%= f.search_field :price_gt %>
+  <%= f.search_field :price_gt, "data-action": "filters#submit" %>
   </div>
 
   <div>
   <%= f.label :price_lt %>
-  <%= f.search_field :price_lt %>
-  </div>
-
-  <div>
-    <%= f.submit %>
+  <%= f.search_field :price_lt, "data-action": "filters#submit" %>
   </div>
 <% end %>
 
-<div class="table-container">
+<%= turbo_frame_tag "table" do %>
   <table>
     <thead>
       <tr>
@@ -39,6 +35,6 @@
       <%= render @products %>
     </tbody>
   </table>
-</div>
 
-<%= raw pagy_nav(@pagy) %>
+  <%= raw pagy_nav(@pagy) %>
+<% end %>

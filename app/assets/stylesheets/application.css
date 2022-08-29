@@ -60,17 +60,16 @@ input[type="submit"]:hover {
 
 form {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
   gap: var(--size-2);
   align-items: flex-end;
 }
 
-.table-container {
+table {
+  width: 100%;
   margin-top: var(--size-7);
-  overflow: auto; 
 }
-
-table { width: 100%; }
 tbody { line-height: var(--font-lineheight-3); }
 td, th {
   text-align: left;
