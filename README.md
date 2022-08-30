@@ -1,24 +1,8 @@
-# README
+# Building a dynamic table with search and filters with rails, ransack and hotwire.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A very common task as a Rails developer, mostly on admin interfaces, is to let
+the user filter a list with a combination of search fields and selects.
 
-Things you may want to cover:
+Here I want to show you one way of doing it using ransack and hotwire, with an example app.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Like this: https://www.loom.com/share/fcf06c14689f4d359cf5213931746cfe
