@@ -1,0 +1,18 @@
+<%= turbo_frame_tag "table" do %>
+  <p class="loading">Loading...</p>
+
+  <table>
+    <thead>
+      <tr>
+        <% table.columns.each do |column| %>
+          <th><%= sort_link(table.q, column) %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render table.records %>
+    </tbody>
+  </table>
+
+  <%= raw pagy_nav(table.pagy) %>
+<% end %>

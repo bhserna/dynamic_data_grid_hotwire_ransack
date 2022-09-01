@@ -22,21 +22,8 @@
   </div>
 <% end %>
 
-<%= turbo_frame_tag "table" do %>
-  <p class="loading">Loading...</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th><%= sort_link(@q, :name) %></th>
-        <th><%= sort_link(@q, :category) %></th>
-        <th><%= sort_link(@q, :price) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @products %>
-    </tbody>
-  </table>
-
-  <%= raw pagy_nav(@pagy) %>
+<%= table_with(ransack_search: @q, records: @products, pagy: @pagy) do |table| %>
+  <%= table.column :name %>
+  <%= table.column :category %>
+  <%= table.column :price %>
 <% end %>
