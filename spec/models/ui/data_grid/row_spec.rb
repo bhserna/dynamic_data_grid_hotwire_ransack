@@ -6,6 +6,8 @@ module UI::DataGrid
 
     subject { described_class.new(table: table) }
 
+    it { should delegate_method(:template_for).to(:table) }
+
     describe "#cells" do
       it "with no columns" do
         allow(table).to receive(:columns) { [] }

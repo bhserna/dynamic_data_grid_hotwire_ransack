@@ -10,6 +10,18 @@ module UI::DataGrid
         subject.column(:category)
         expect(subject.columns).to eq [:name, :category]
       end
+
+      it "can receive a template to be executed later" do
+        record = build :product
+
+        subject.column(:name) do |record|
+          record.name.upcase
+        end
+
+        template = subject.template_for(:name)
+        result = template.call(record)
+        expect(result).to eq record.name.upcase
+      end
     end
 
     describe "#rows" do

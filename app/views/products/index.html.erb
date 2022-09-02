@@ -25,5 +25,7 @@
 <%= table_with(ransack_search: @q, records: @products, pagy: @pagy) do |table| %>
   <%= table.column :name %>
   <%= table.column :category %>
-  <%= table.column :price %>
+  <%= table.column :price do |record| %>
+    <%= number_to_currency record.price%>
+  <% end %>
 <% end %>
