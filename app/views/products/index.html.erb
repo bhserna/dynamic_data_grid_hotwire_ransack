@@ -1,11 +1,16 @@
 <h1>Products</h1>
 
-<%= render UI::DataGrid::Filters.new(ransack_search: @q) %>
+<%= filters_with(ransack_search: @q) do |f| %>
+  <%= f.search_field :name_cont %>
+  <%= f.select :category_eq, Product.categories %>
+  <%= f.search_field :price_gt %>
+  <%= f.search_field :price_lt %>
+<% end %>
 
-<%= table_with(ransack_search: @q, records: @products, pagy: @pagy) do |table| %>
-  <%= table.column :name %>
-  <%= table.column :category %>
-  <%= table.column :price do |record| %>
+<%= table_with(ransack_search: @q, records: @products, pagy: @pagy) do |t| %>
+  <%= t.column :name %>
+  <%= t.column :category %>
+  <%= t.column :price do |record| %>
     <%= number_to_currency record.price%>
   <% end %>
 <% end %>
