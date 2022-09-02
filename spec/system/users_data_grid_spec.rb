@@ -26,14 +26,14 @@ RSpec.describe "Users data grid" do
     expect(ordered_rows_ids).to eq([dom_id(product2), dom_id(product1)])
   end
 
-  it "search by name" do
+  it "search by name", js: true do
     product1 = create :product, name: "A"
     product2 = create :product, name: "B"
 
     visit products_path
 
-    fill_in "Name contains", with: "A"
-    click_on "Search"
+    fill_in "q[name_cont]", with: "A"
+    blur_from "q[name_cont]"
 
     expect(page).to display_product(product1)
     expect(page).not_to display_product(product2)
@@ -45,5 +45,10 @@ RSpec.describe "Users data grid" do
 
   def ordered_rows_ids
     page.all("tbody tr").map { |row| row[:id] }
+  end
+
+  def blur_from(locator)
+    field = find_field(locator)
+    field.native.send_keys :tab
   end
 end
