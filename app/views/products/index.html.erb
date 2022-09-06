@@ -1,42 +1,16 @@
 <h1>Products</h1>
 
-<%= search_form_for @q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
-  <div>
-  <%= f.label :name_cont %>
-  <%= f.search_field :name_cont, "data-action": "filters#submit" %>
-  </div>
-
-  <div>
-  <%= f.label :category_eq %>
-  <%= f.select :category_eq, Product.categories, {include_blank: true}, {"data-action": "filters#submit"} %>
-  </div>
-
-  <div>
-  <%= f.label :price_gt %>
-  <%= f.search_field :price_gt, "data-action": "filters#submit" %>
-  </div>
-
-  <div>
-  <%= f.label :price_lt %>
-  <%= f.search_field :price_lt, "data-action": "filters#submit" %>
-  </div>
+<%= filters_with(ransack_search: @q) do |f| %>
+  <%= f.search_field :name_cont %>
+  <%= f.select :category_eq, Product.categories %>
+  <%= f.search_field :price_gt %>
+  <%= f.search_field :price_lt %>
 <% end %>
 
-<%= turbo_frame_tag "table" do %>
-  <p class="loading">Loading...</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th><%= sort_link(@q, :name) %></th>
-        <th><%= sort_link(@q, :category) %></th>
-        <th><%= sort_link(@q, :price) %></th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= render @products %>
-    </tbody>
-  </table>
-
-  <%= raw pagy_nav(@pagy) %>
+<%= table_with(ransack_search: @q, records: @products, pagy: @pagy) do |t| %>
+  <%= t.column :name %>
+  <%= t.column :category %>
+  <%= t.column :price do |record| %>
+    <%= number_to_currency record.price %>
+  <% end %>
 <% end %>

@@ -1,0 +1,3 @@
+<%= search_form_for filters.q, html: {"data-controller": "filters", "data-turbo-frame": "table"} do |f| %>
+  <%= render partial: filters.inputs, as: :input, locals: {f: f} %>
+<% end %>
